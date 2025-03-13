@@ -1,0 +1,11 @@
+db.sqlite3
+
+.env
+
+__pycache__/
+*.pyc
+*.pyo
+
+venv/
+
+**/migrations/__pycache__/

@@ -1,0 +1,62 @@
+{% extends 'app/base.html' %}
+
+{% block title %}Calculation Results{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="display-4 text-center text-primary mb-4">Calculation Results</h1>
+    <p class="lead text-center text-secondary mb-5">Here are the calculated results for the chosen function.</p>
+
+    <div class="row justify-content-center mb-5">
+        <div class="col-12 col-md-8">
+            <h3 class="text-primary mb-4">Polynomial: {{ function_latex_html | safe }}</h3>
+
+            <div class="table-responsive shadow-lg p-3 mb-4 bg-white rounded">
+                <table class="table table-striped table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">Interval</th>
+                            <th scope="col">Newton</th>
+                            <th scope="col">Bisection</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for interval, methods in results.items %}
+                        <tr>
+                            <td>{{ interval }}</td>
+                            <td>{{ methods.newton | floatformat:4 }}</td>
+                            <td>{{ methods.bisection | floatformat:4 }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div id="calculator" class="col-12 col-md-6" style="height: 500px;"></div>
+        </div>
+    </div>    
+
+    <div class="text-center">
+        <a href="{% url 'index' %}" class="btn btn-lg btn-outline-secondary shadow-lg px-3 py-2 mt-4">Main Page</a>
+    </div>
+</div>
+
+<script src="https://www.desmos.com/api/v1.9/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+<script>
+    const calculatorElement = document.getElementById('calculator');
+    const calculator = Desmos.Calculator(calculatorElement, {
+        expressions: false,         
+        settingsMenu: false,        
+        zoomButtons: true,         
+        keypad: false,              
+        expressionsTopbar: false    
+    });
+
+    calculator.setExpression({ id: 'function', latex: "{{function_latex_desmos | safe}}"});
+</script>
+
+{% endblock %}

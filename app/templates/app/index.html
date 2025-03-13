@@ -1,0 +1,15 @@
+{% extends 'app/base.html' %}
+
+{% block title %}Main Page{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="display-3 text-center text-primary mb-4">Welcome to the Polynomial Calculator App</h1>
+    <p class="lead text-center text-secondary mb-5">Navigate through the options below to get started.</p>
+    
+    <div class="d-flex justify-content-center gap-4">
+      <a href="{% url 'from_db' %}" class="btn btn-lg btn-outline-primary shadow-lg px-5 py-3">Select from Database</a>
+      <a href="{% url 'manual' %}" class="btn btn-lg btn-outline-success shadow-lg px-5 py-3">Enter Values Manually</a>
+    </div>
+</div>
+{% endblock %}

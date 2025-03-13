@@ -1,0 +1,43 @@
+{% extends 'app/base.html' %}
+
+{% block title %}Enter Values Manually{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="display-4 text-center text-primary mb-4">Enter Values Manually</h1>
+    <p class="lead text-center text-secondary mb-5">Follow the instructions below to enter valid expressions.</p>
+
+    <div class="container mb-5 text-center">
+        <button class="btn btn-outline-info mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#instructions" aria-expanded="false" aria-controls="instructions">
+            Show Instructions
+        </button>
+
+        <div id="instructions" class="collapse">
+            <div class="card shadow-lg mb-4 mx-auto" style="max-width: 500px;">
+                <div class="card-body">
+                    <h5 class="card-title text-center text-primary mb-3">Input Instructions</h5>
+                    <div class="text-center">
+                        <p><strong>Functions must be only polynomial.</strong></p>
+                        <p>Use <code>+</code> for addition, <code>-</code> for subtraction, <code>*</code> for multiplication, and <code>**</code> for exponentiation.</p>
+                        <p>Use parentheses to group terms and control the order of operations when necessary.</p>
+                        <p>Use a dot <code>.</code> as a decimal point, not a comma <code>,</code> when entering decimal numbers in functions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+
+    <div class="container text-center my-5">
+        <h3 class="text-primary">Input Values</h3>
+        <form method="POST" class="mt-4 mx-auto shadow-lg p-4 rounded" style="max-width: 400px;">
+            {% csrf_token %}
+            {{ form|crispy }}
+
+            <button type="submit" class="btn btn-lg btn-outline-primary shadow-lg px-4 py-2 mt-3">Save</button>
+            <a href="{% url 'index' %}" class="btn btn-lg btn-outline-secondary shadow-lg px-2 py-2 mt-3">Main Page</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

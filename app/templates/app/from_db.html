@@ -1,0 +1,38 @@
+{% extends 'app/base.html' %}
+
+{% block title %}Select from Database{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="display-3 text-center text-primary mb-4">Select from Database</h2>
+    <p class="lead text-center text-secondary mb-5">Choose an entry to calculate the roots.</p>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show mx-auto w-50" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST" action="{% url 'results' %}" class="text-center">
+        {% csrf_token %}
+
+        <div class="mb-4">
+            <select name="selected_name" id="selected_name" class="form-select mx-auto w-25 shadow-lg">
+                <option value="" disabled selected>Select</option>
+                {% for entry_name in entries_names %}
+                    <option value="{{ entry_name }}">{{ entry_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-lg btn-outline-primary shadow-lg px-4 py-2">Calculate</button>
+    </form>
+
+    <div class="d-flex justify-content-center mt-4">
+        <a href="{% url 'index' %}" class="btn btn-lg btn-outline-secondary shadow-lg px-3 py-2">Main Page</a>
+    </div>
+</div>
+{% endblock %}
