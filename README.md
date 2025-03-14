@@ -63,7 +63,7 @@ docker run -p 8000:8000 rootcalc
 ```
 Or, to specify .env file, run (assuming .env is present):
 ```
-docker run --env-file .env -p 8000:8000 chat_app
+docker run --env-file .env -p 8000:8000 rootcalc
 ```
 **4. Access the Application:**  
 After running the container, you can access the application by navigating to `http://localhost:8000` in your web browser.
