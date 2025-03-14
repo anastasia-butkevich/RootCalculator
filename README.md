@@ -48,7 +48,7 @@ Create a `.env` file in the project's root directory and add the necessary varia
 ```
 SECRET_KEY=your_django_secret_key
 DEBUG=True  # or False, depending on your environment
-DATABASE_ENGINE=django.db.backends.sqlite3  # or your preferred engine
+DATABASE_ENGINE=django.db.backends.sqlite3  
 DATABASE_NAME=your_database_name
 ```
 **3. Build the Docker Image:**  
