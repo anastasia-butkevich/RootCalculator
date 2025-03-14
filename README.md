@@ -52,24 +52,22 @@ DEBUG=True  # or False, depending on your environment
 DATABASE_ENGINE=django.db.backends.sqlite3  
 DATABASE_NAME=your_database_name
 ```
-**3. Build the Docker Image:**  
-In the terminal, from the repository's root directory, run:
+**3.  Build and Run the Docker Container:**  
+Build the Docker image:
 ```
 docker buildx build -t rootcalc -f docker/Dockerfile .
 ```
-**3. Run the Docker Container**  
-Start the container:
+Run the container:
 ```
 docker run -p 8000:8000 rootcalc
 ```
-Or, to specify .env file, run (assuming .env is present):
+Or, if using an `.env` file:
 ```
 docker run --env-file .env -p 8000:8000 rootcalc
 ```
-**4. Access the Application:**  
 After running the container, you can access the application by navigating to `http://localhost:8000` in your web browser.
 
-**5. Stopping the Application:**  
+**4. Stopping the Application:**  
 Stop the container by running:
 ```
 docker stop <container-id>
