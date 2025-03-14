@@ -40,7 +40,7 @@ To install and run the application using Docker, follow the steps below:
 **1. Clone the repository:**  
 Firstly, navigate to the target directory using `cd` where you want to store the repository. Then run `git clone`:
 ``` 
-git clone <repository-url>
+git clone https://github.com/anastasia-butkevich/RootCalculator.git
 cd <repository-folder>
 ```
 **2. Create the `.env` file:**  
