@@ -39,9 +39,10 @@ Before running the application, ensure you create a .env file in the project's r
 To install and run the application using Docker, follow the steps below:  
 **1. Clone the repository:**  
 Firstly, navigate to the target directory using `cd` where you want to store the repository. Then run `git clone`:
-``` 
+```
+cd /path/to/directory
 git clone https://github.com/anastasia-butkevich/RootCalculator.git
-cd <repository-folder>
+cd RootCalculator
 ```
 **2. Create the `.env` file:**  
 Create a `.env` file in the project's root directory and add the necessary variables:
